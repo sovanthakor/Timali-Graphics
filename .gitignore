@@ -1,0 +1,27 @@
+# Dependencies / tooling
+node_modules/
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+
+# Local / secret files  (kabhi bhi commit na karein)
+*.local
+.env
+.env.*
+.firebase-login-url.txt
