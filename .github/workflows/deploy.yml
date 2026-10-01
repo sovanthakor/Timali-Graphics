@@ -1,0 +1,64 @@
+name: Deploy to Firebase Hosting
+
+# Har push par website apne aap live ho jaye.
+# Manual trigger bhi kar sakte ho: Actions tab -> Run workflow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Sirf ek hi deployment chalegi ek time me (yaarein push aane par)
+concurrency:
+  group: firebase-hosting-deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache Firebase CLI
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: firebase-cli-${{ runner.os }}-${{ hashFiles('package.json') }}
+          restore-keys: firebase-cli-${{ runner.os }}-
+
+      # Version pin ki hai taaki future major update se workflow na toote
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools@13
+
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting --project timali-graphics
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          # CI token ke saath project detect na ho to ye flag zaroori hai
+          FIREBASE_CLI_EXPERIMENTS: 'webframeworks,deployframeworks'
+
+      - name: Verify site is live
+        run: |
+          echo "Checking https://timali-graphics.web.app ..."
+          for i in {1..10}; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" https://timali-graphics.web.app/ || echo 000)
+            if [ "$code" = "200" ]; then
+              echo "OK - site returned 200"
+              exit 0
+            fi
+            echo "attempt $i: got $code, retrying in 10s"
+            sleep 10
+          done
+          echo "Site did not return 200 in time"
+          exit 1
