@@ -214,36 +214,39 @@ button{font:inherit}
 .hero__actions{display:flex;flex-wrap:wrap;gap:14px}
 
 
-/* Hero work collage (CSS mockups — replace with real photos later) */
-.collage{position:relative;min-height:430px}
+/* Hero work collage — real work photos in tilted card frames */
+.collage{position:relative;min-height:572px}
 .collage__item{
-  position:absolute;background:var(--white);border-radius:var(--r-md);
-  box-shadow:var(--sh-3);padding:12px 14px;color:var(--navy);
-  display:flex;flex-direction:column;justify-content:space-between;
+  position:absolute;background:var(--white);border-radius:var(--r-md);margin:0;
+  box-shadow:var(--sh-3);padding:7px;
   transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease;
 }
-.collage__item:hover{transform:translateY(-7px) scale(1.025);box-shadow:0 30px 70px rgba(0,0,0,.34)}
-.collage__item b{font-family:'Poppins',sans-serif;font-size:.86rem;font-weight:600;line-height:1.25;display:block}
-.collage__item small{font-size:.68rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
-.collage__bar{height:5px;border-radius:3px;background:var(--yellow);margin-top:10px}
-.collage__lines{display:grid;gap:4px;margin-top:9px}
-.collage__lines i{display:block;height:4px;border-radius:2px;background:#E7E5EE}
-.collage__lines i:nth-child(2){width:78%}
-.collage__lines i:nth-child(3){width:52%}
-.collage__chip{display:flex;align-items:center;gap:6px;font-size:.68rem;font-weight:600;color:var(--navy);background:var(--yellow-50);border-radius:5px;padding:3px 7px;margin-top:9px;width:max-content}
-
-.collage__item--1{top:0;left:0;width:200px;height:132px;transform:rotate(-3deg)}
-.collage__item--2{top:0;right:0;width:190px;height:126px;transform:rotate(2.5deg)}
-.collage__item--3{top:118px;left:50%;margin-left:-118px;width:236px;height:154px;transform:rotate(-1.2deg);z-index:3}
-.collage__item--4{bottom:0;left:0;width:206px;height:134px;transform:rotate(2.2deg)}
-.collage__item--5{bottom:0;right:0;width:198px;height:130px;transform:rotate(-2.4deg)}
-.collage__badge{
-  position:absolute;left:50%;top:50%;z-index:6;transform:translate(-50%,-50%) rotate(-2deg);
-  background:var(--yellow);color:var(--navy);border-radius:10px;padding:12px 18px;text-align:center;
-  box-shadow:0 16px 40px rgba(251,186,0,.4);
+.collage__item img{
+  display:block;width:100%;height:auto;aspect-ratio:16/11;object-fit:cover;
+  border-radius:7px;background:var(--bg);
 }
-.collage__badge b{display:block;font-family:'Poppins',sans-serif;font-size:1.15rem;font-weight:700;line-height:1.1}
-.collage__badge small{font-size:.66rem;letter-spacing:.11em;text-transform:uppercase}
+.collage__item figcaption{
+  font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:600;color:var(--navy);
+  padding:7px 3px 2px;line-height:1.2;
+}
+.collage__item--1:hover{transform:translateY(-8px) scale(1.03) rotate(-3deg);box-shadow:0 30px 70px rgba(0,0,0,.34)}
+.collage__item--2:hover{transform:translateY(-8px) scale(1.03) rotate(2.5deg);box-shadow:0 30px 70px rgba(0,0,0,.34)}
+.collage__item--3:hover{transform:translateY(-8px) scale(1.03) rotate(-1.2deg);box-shadow:0 30px 70px rgba(0,0,0,.34)}
+.collage__item--4:hover{transform:translateY(-8px) scale(1.03) rotate(2.2deg);box-shadow:0 30px 70px rgba(0,0,0,.34)}
+.collage__item--5:hover{transform:translateY(-8px) scale(1.03) rotate(-2.4deg);box-shadow:0 30px 70px rgba(0,0,0,.34)}
+
+.collage__item--1{top:206px;left:0;width:206px;transform:rotate(-3deg)}
+.collage__item--2{top:198px;right:0;width:198px;transform:rotate(2.5deg)}
+.collage__item--3{top:0;left:50%;margin-left:-124px;width:248px;transform:rotate(-1.2deg);z-index:3}
+.collage__item--4{top:380px;left:8px;width:212px;transform:rotate(2.2deg)}
+.collage__item--5{top:374px;right:8px;width:204px;transform:rotate(-2.4deg)}
+.collage__badge{
+  position:absolute;left:50%;top:250px;z-index:6;transform:translateX(-50%) rotate(-1.5deg);
+  background:var(--yellow);color:var(--navy);border-radius:10px;padding:10px 20px;text-align:center;
+  box-shadow:0 16px 40px rgba(251,186,0,.4);white-space:nowrap;
+}
+.collage__badge b{display:block;font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:700;line-height:1.15}
+.collage__badge small{font-size:.64rem;letter-spacing:.11em;text-transform:uppercase}
 
 /* ---------- 9. TRUST HIGHLIGHTS ---------- */
 .trust{background:var(--white);border-bottom:1px solid var(--line)}
@@ -522,7 +525,7 @@ button{font:inherit}
 /* ---------- 22. RESPONSIVE ---------- */
 @media (max-width:1080px){
   .hero__in{grid-template-columns:1fr;gap:44px}
-  .collage{min-height:400px;max-width:520px;margin-inline:auto;width:100%}
+  .collage{min-height:572px;max-width:544px;margin-inline:auto;width:100%}
   .about__in{grid-template-columns:1fr}
   .figure{max-width:520px;min-height:340px}
   .contact__in{grid-template-columns:1fr}
@@ -581,16 +584,15 @@ button{font:inherit}
   .trust__grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:28px}
   .pf-grid{grid-template-columns:1fr}
-  .collage{min-height:360px}
-  .collage__item--1{width:150px;height:104px}
-  .collage__item--2{width:144px;height:100px}
-  .collage__item--3{width:190px;height:126px;top:100px;margin-left:-95px}
-  .collage__item--4{width:156px;height:106px}
-  .collage__item--5{width:150px;height:102px}
-  .collage__badge{padding:9px 13px}
-  .collage__badge b{font-size:.95rem}
-  .collage__item b{font-size:.76rem}
-  .collage__item small{font-size:.6rem}
+  .collage{min-height:452px}
+  .collage__item--1{width:158px;top:172px}
+  .collage__item--2{width:152px;top:166px}
+  .collage__item--3{width:196px;top:0;margin-left:-98px}
+  .collage__item--4{width:162px;top:322px;left:2px}
+  .collage__item--5{width:156px;top:318px;right:2px}
+  .collage__badge{top:212px;padding:8px 13px}
+  .collage__badge b{font-size:.92rem}
+  .collage__item figcaption{font-size:.62rem;padding:5px 2px 1px}
   .hero__actions .btn{flex:1 1 100%}
   .cta__actions .btn{flex:1 1 100%}
   .brand img{width:44px;height:44px}
