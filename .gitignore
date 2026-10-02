@@ -20,7 +20,8 @@ $RECYCLE.BIN/
 # OS
 .DS_Store
 
-# Local / secret files  (kabhi bhi commit na karein)
+# Unused / not-published assets (jaise stock photos)
+tools/_unused/
 *.local
 .env
 .env.*
