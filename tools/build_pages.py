@@ -447,7 +447,7 @@ def page_about():
 
     <div class="figure reveal">
       <span class="figure__note">Shop &amp; Workspace</span>
-      <img src="assets/img/shop-placeholder.svg" alt="Timali Graphics shop at 150, Tiranga Circle, Nagar Palika Market, Idar" loading="lazy" width="800" height="600">
+      <img src="assets/img/shop.webp" alt="Timali Graphics shop at 150, Tiranga Circle, Nagar Palika Market, Idar" loading="lazy" width="1200" height="900">
       <div class="figure__cap">
         <b>Timali Graphics, Idar</b>
         <small>150, Tiranga Circle, Nagar Palika Market</small>
