@@ -487,8 +487,8 @@ button{font:inherit}
 .detail__list{display:grid;gap:9px;margin:0 0 22px}
 .detail__list li{position:relative;padding-left:26px;font-size:.94rem;color:var(--ink)}
 .detail__list li::before{content:"";position:absolute;left:0;top:.46em;width:14px;height:14px;border-radius:4px;background:var(--yellow)}
-.detail__fig{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:var(--bg);box-shadow:var(--sh-1);aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:24px}
-.detail__fig img{width:100%;height:100%;object-fit:cover}
+.detail__fig{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:var(--bg);box-shadow:var(--sh-1);aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:14px}
+.detail__fig img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .detail__placeholder{display:grid;gap:10px;place-items:center;color:var(--muted)}
 .detail__placeholder svg{width:44px;height:44px;fill:none;stroke:var(--yellow-600);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .detail__placeholder b{font-family:'Poppins',sans-serif;font-size:.95rem;color:var(--navy)}

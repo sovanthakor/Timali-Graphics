@@ -348,6 +348,11 @@ FILTERS = [("all", "All"), ("cards", "Business Cards"), ("invitation", "Wedding 
            ("certificate", "Certificates"), ("other", "Other")]
 
 
+def service_img(slug):
+    """Prefer the owner's real .webp photo; fall back to the .svg placeholder."""
+    webp = os.path.join(ROOT, "assets", "img", "services", slug + ".webp")
+    return "assets/img/services/" + slug + (".webp" if os.path.exists(webp) else ".svg")
+
 def build_portfolio_items():
     rows = [
         ("01-visiting-card", "cards", "Business Cards", "Business Visiting Card", "Multi-colour card"),
@@ -400,7 +405,7 @@ def service_blocks():
         </div>
       </div>
       <div class="detail__fig">
-        <img src="assets/img/services/{s['img']}.svg" alt="{s['name']} by Timali Graphics" loading="lazy" width="800" height="600">
+        <img src="{service_img(s['img'])}" alt="{s['name']} designed and printed by Timali Graphics, Idar" loading="lazy">
       </div>
     </article>""")
     return "\n".join(out)
@@ -535,7 +540,7 @@ def page_solutions():
         </div>
       </div>
       <div class="detail__fig">
-        <img src="assets/img/services/{anchor}.svg" alt="{title} printing by Timali Graphics" loading="lazy" width="800" height="600">
+        <img src="{service_img(anchor)}" alt="{title} printing by Timali Graphics, Idar" loading="lazy">
       </div>
     </article>""")
 
